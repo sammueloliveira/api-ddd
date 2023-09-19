@@ -1,0 +1,11 @@
+﻿namespace Application.Inferfaces
+{
+    public interface IGenericApp<T> where T : class
+    {
+        Task Add(T objeto);
+        Task Update(T objeto);
+        Task Delete(T objeto);
+        Task<T> GetEntityId(int id);
+        Task<List<T>> List();
+    }
+}
