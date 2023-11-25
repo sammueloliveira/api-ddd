@@ -65,7 +65,7 @@ builder.Services.AddSingleton(typeof(IGeneric<>), typeof(RepositoryGeneric<>));
 builder.Services.AddSingleton<IMessage, RepositoryMessage>();
 
 // Servico Dominigo
-builder.Services.AddSingleton<IServiceMessage, ServiceMessage>();
+builder.Services.AddSingleton<IMessageService, MessageService>();
 
 // Interface Aplicacao
 builder.Services.AddSingleton<IMessageApp, MessageApp>();
@@ -99,10 +99,15 @@ builder.Services.AddAuthentication(options =>
 
 var app = builder.Build();
 
-var urlCliente1 = "https://dominiocliente.com.br";
-app.UseCors(b => b.WithOrigins(urlCliente1));
+#region Novo
+var urlCliente = "http://localhost:4200";
+app.UseCors(x => x
+.AllowAnyOrigin()
+.AllowAnyMethod()
+.AllowAnyHeader().WithOrigins(urlCliente));
+#endregion
 
-// Configure the HTTP request pipeline.
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

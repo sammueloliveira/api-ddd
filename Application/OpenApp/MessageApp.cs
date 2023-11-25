@@ -8,8 +8,8 @@ namespace Application.OpenApp
     public class MessageApp : IMessageApp
     {
         private readonly IMessage _IMessage;
-        private readonly IServiceMessage _IServiceMessage;
-        public MessageApp(IMessage iMessage, IServiceMessage serviceMessage)
+        private readonly IMessageService _IServiceMessage;
+        public MessageApp(IMessage iMessage, IMessageService serviceMessage)
         {
             _IMessage = iMessage;
             _IServiceMessage = serviceMessage;

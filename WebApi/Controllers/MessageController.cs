@@ -14,13 +14,13 @@ namespace WebApi.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IMessage _message;
-        private readonly IServiceMessage _serviceMessage;
+        private readonly IMessageService _messageService;
 
-        public MessageController(IMapper mapper, IMessage message, IServiceMessage serviceMessage)
+        public MessageController(IMapper mapper, IMessage message, IMessageService messageService)
         {
             _mapper = mapper;
             _message = message;
-            _serviceMessage = serviceMessage;
+            _messageService = messageService;
         }
 
         [Authorize]
@@ -39,7 +39,7 @@ namespace WebApi.Controllers
         public async Task<IActionResult> Add(MessageViewModel message)
         {
             var messageMap = _mapper.Map<Message>(message);
-            await _serviceMessage.AddMessage(messageMap);
+            await _messageService.AddMessage(messageMap);
 
             return Ok(_mapper.Map<MessageViewModel>(messageMap));
         }
@@ -50,7 +50,7 @@ namespace WebApi.Controllers
         public async Task<IActionResult> Update(MessageViewModel message)
         {
             var messageMap = _mapper.Map<Message>(message);
-            await _serviceMessage.UpdateMessage(messageMap);
+            await _messageService.UpdateMessage(messageMap);
 
             return Ok(_mapper.Map<MessageViewModel>(messageMap));
         }
@@ -84,7 +84,7 @@ namespace WebApi.Controllers
         [HttpGet("ListarMessageAtivas")]
         public async Task<IActionResult> ListarMessageAtivas()
         {
-            var mensagens = await _serviceMessage.ListaMessageAtivas();
+            var mensagens = await _messageService.ListaMessageAtivas();
             var messageMap = _mapper.Map<List<MessageViewModel>>(mensagens);
 
             return Ok(messageMap);

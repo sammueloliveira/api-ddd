@@ -4,10 +4,10 @@ using Domain.InterfaceServices;
 
 namespace Domain.Services
 {
-    public class ServiceMessage : IServiceMessage
+    public class MessageService : IMessageService
     {
         private readonly IMessage _IMessage;
-        public ServiceMessage(IMessage iMessage)
+        public MessageService(IMessage iMessage)
         {
             _IMessage = iMessage;
         }

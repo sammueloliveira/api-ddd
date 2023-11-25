@@ -2,7 +2,7 @@
 
 namespace Domain.InterfaceServices
 {
-     public interface IServiceMessage 
+     public interface IMessageService 
     {
         Task AddMessage(Message message);
         Task UpdateMessage(Message message);
