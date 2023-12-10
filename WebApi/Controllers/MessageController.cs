@@ -8,7 +8,7 @@ using WebApi.Models;
 
 namespace WebApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/message")]
     [ApiController]
     public class MessageController : ControllerBase
     {
@@ -25,7 +25,7 @@ namespace WebApi.Controllers
 
         [Authorize]
         [Produces("application/json")]
-        [HttpGet("List")]
+        [HttpGet("list")]
         public async Task<IActionResult> List()
         {
             var mensagens = await _message.List();
@@ -35,7 +35,7 @@ namespace WebApi.Controllers
         }
         [Authorize]
         [Produces("application/json")]
-        [HttpPost("Add")]
+        [HttpPost("add")]
         public async Task<IActionResult> Add(MessageViewModel message)
         {
             var messageMap = _mapper.Map<Message>(message);
@@ -46,7 +46,7 @@ namespace WebApi.Controllers
 
         [Authorize]
         [Produces("application/json")]
-        [HttpPut("Update")]
+        [HttpPut("update")]
         public async Task<IActionResult> Update(MessageViewModel message)
         {
             var messageMap = _mapper.Map<Message>(message);
@@ -57,7 +57,7 @@ namespace WebApi.Controllers
 
         [Authorize]
         [Produces("application/json")]
-        [HttpDelete("Delete")]
+        [HttpDelete("delete")]
         public async Task<IActionResult> Delete(MessageViewModel message)
         {
             var messageMap = _mapper.Map<Message>(message);
@@ -68,7 +68,7 @@ namespace WebApi.Controllers
 
         [Authorize]
         [Produces("application/json")]
-        [HttpGet("GetEntityById")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> GetEntityById(int id)
         {
             var message = await _message.GetEntityId(id);
@@ -81,7 +81,7 @@ namespace WebApi.Controllers
 
         [Authorize]
         [Produces("application/json")]
-        [HttpGet("ListarMessageAtivas")]
+        [HttpGet("listar-message-ativas")]
         public async Task<IActionResult> ListarMessageAtivas()
         {
             var mensagens = await _messageService.ListaMessageAtivas();
