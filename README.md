@@ -1,4 +1,4 @@
-# Api_DDD
+# Api_ddd
 Este projeto é uma API RESTful desenvolvida em C# .NET, que utiliza conceitos de DDD (Domain-Driven Design) e arquitetura de microserviços. A API foi construída com foco em escalabilidade e manutenção, incorporando as seguintes tecnologias e padrões:
 
 Automapper: Para facilitar o mapeamento entre entidades e DTOs.
